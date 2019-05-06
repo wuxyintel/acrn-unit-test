@@ -100,6 +100,7 @@ void setup_vm()
 		top = top & -PAGE_SIZE;
 		free_pages(phys_to_virt(base), top - base);
 	}
+	printf("setup_vm: base=%lx, top=%lx\n", base, top);
 	page_root = setup_mmu(top);
 	alloc_ops = &vmalloc_ops;
 }
