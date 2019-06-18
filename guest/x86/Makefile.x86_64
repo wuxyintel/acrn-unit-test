@@ -21,5 +21,6 @@ tests += $(TEST_DIR)/intel_iommu.flat
 tests += $(TEST_DIR)/vmware_backdoors.flat
 tests += $(TEST_DIR)/hyperv_clock.flat
 tests += $(TEST_DIR)/string_ops.flat
+tests += $(TEST_DIR)/rep_string.flat
 
 include $(SRCDIR)/$(TEST_DIR)/Makefile.common
