@@ -8,7 +8,7 @@ ipi_vector = 0x20
 
 max_cpus = 64
 
-.bss
+.data
 
 	. = . + 4096 * max_cpus
 	.align 16
@@ -96,6 +96,7 @@ MSR_GS_BASE = 0xc0000101
 start:
         mov $stacktop, %esp
         push %ebx
+        call bss_init
         call setup_multiboot
         call setup_libcflat
         mov mb_cmdline(%ebx), %eax
@@ -152,7 +153,7 @@ start32:
 	mov %ax, %gs
 	mov %ax, %ss
 	call load_tss
-	call mask_pic_interrupts
+	/*call mask_pic_interrupts*/
 	call enable_apic
 	call smp_init
 	call enable_x2apic
